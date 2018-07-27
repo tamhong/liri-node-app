@@ -21,7 +21,16 @@ if (!title) {
     movieQuery = title;
 }
 
+var logInput = function () {
+    fs.appendFile('log.txt', action + ': ' + process.argv.slice(3).join(" ") + '\n', function (err) {
+        if (err) throw err;
+    });
+};
+
+
 var myTweets = function () {
+
+    logInput();
 
     var params = {screen_name: 'TraderJ59316067'};
     client.get('statuses/user_timeline', params, function(error, tweets, response) {
@@ -38,6 +47,9 @@ var myTweets = function () {
 };
 
 var spotifySong = function (songTitle) { 
+
+    logInput();
+
     spotify.search({ 
         type: 'track', 
         query: songTitle,
@@ -56,6 +68,9 @@ var spotifySong = function (songTitle) {
 };
 
 var movieThis = function () {
+
+    logInput();
+
     request('http://www.omdbapi.com/?t=' + movieQuery + '&y=&plot=short&apikey=trilogy', function (error, response, body) {
         if (!error && response.statusCode === 200) {
             console.log("Title: " +JSON.parse(body).Title);
@@ -72,6 +87,9 @@ var movieThis = function () {
 }
 
 var doThis = function () {
+
+    logInput();
+
     fs.readFile("random.text", "utf8", function (error, data) {
         if (error) {
             return console.log (error);
