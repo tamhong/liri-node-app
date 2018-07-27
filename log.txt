@@ -3,3 +3,5 @@ movie-this: pink panther
 do-what-it-says: 
 spotify-this-song: 
 my-tweets: 
+movie-this: the incredibles
+spotify-this-song: check yes juliet
